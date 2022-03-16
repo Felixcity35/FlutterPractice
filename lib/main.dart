@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
 
 void main() {
   runApp(HelloWorld());
@@ -15,10 +16,25 @@ class HelloWorld extends StatelessWidget {
           title: const Text('Hello World'),
           backgroundColor: Colors.black12,
         ),
-        body: const Center(
-          child: Text("Hello World"),
+        body: Center(
+          child: Randomwords(),
         ),
       ),
     );
+  }
+}
+
+class Randomwords extends StatefulWidget {
+  const Randomwords({Key key}) : super(key: key);
+
+  @override
+  _RandomwordsState createState() => _RandomwordsState();
+}
+
+class _RandomwordsState extends State<Randomwords> {
+  @override
+  Widget build(BuildContext context) {
+    final wordPair = WordPair.random();
+    return Text(wordPair.asPascalCase);
   }
 }
